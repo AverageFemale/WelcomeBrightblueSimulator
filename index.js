@@ -15,7 +15,7 @@ async function main() {
   chatClient.onConnect(() => {console.log(`Connected to: ${channels.join(", ")}.`)})
   
 	chatClient.onMessage(async (channel, user, text, msg) => {
-    if (/can u donate|please donate|dono me|dono pls|can u dono|can you dono|donate pls|can you donate|donate me|donate to me/g.test(text.toLowerCase())) {
+    if (/can u donate|please donate|dono me|dono pls|pls dono|can u dono|can you dono|donate pls|can you donate|donate me|donate to me/g.test(text.toLowerCase())) {
       chatClient.say(channel,`He is currently not donating at the moment.`,{replyTo: msg})
     }
 	});
