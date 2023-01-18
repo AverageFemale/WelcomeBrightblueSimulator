@@ -10,11 +10,24 @@ async function main() {
   const accessToken = process.env['token']
 	const authProvider = new StaticAuthProvider(clientId,accessToken)
   const channels = ['je_remy_']
+  let bool = false
 	const chatClient = new ChatClient({ authProvider, channels: channels });
   const apiClient = new ApiClient({authProvider})
   chatClient.onConnect(() => {console.log(`Connected to: ${channels.join(", ")}.`)})
   
 	chatClient.onMessage(async (channel, user, text, msg) => {
+    if (user.toLowerCase() == "AverageFemale_") {
+      if (text.toLowerCase() == "!toggle on") {
+        if (bool) return chatClient.say(channel,"Already on. [Automated Response]",{replyTo: msg})
+        bool = false
+        chatClient.say(channel,"Turned on. [Automated Response]",{replyTo: msg})
+      } else if (text.toLowerCase() == "!toggle off") {
+        if (!bool) return chatClient.say(channel,"Already off. [Automated Response]",{replyTo: msg})
+        bool = true
+        chatClient.say(channel,"Turned off. [Automated Response]",{replyTo: msg})
+      }
+    }
+    if (!bool) return 
     if (/can u donate|please donate|dono me|pls donate|gift me|dono pls|pls dono|can u dono|can you dono|donate pls|can you donate|donate me|donate to me/g.test(text.toLowerCase())) {
       chatClient.say(channel,`He is currently not donating at the moment. [Automated Response]`,{replyTo: msg})
     }
