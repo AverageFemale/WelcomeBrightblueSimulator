@@ -30,7 +30,7 @@ async function main() {
         const args = text.replace(/!loop /g,"").split(" ")
         const amount = parseInt(args.shift())
         const message = args.filter(v => v != amount.toString())
-        for (var i = 0; i < amount + 1; i++) {
+        for (var i = 0; i < amount; i++) {
           chatClient.say(channel,message)
         }
       }
