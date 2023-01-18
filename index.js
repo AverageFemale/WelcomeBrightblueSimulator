@@ -16,7 +16,7 @@ async function main() {
   chatClient.onConnect(() => {console.log(`Connected to: ${channels.join(", ")}.`)})
   
 	chatClient.onMessage(async (channel, user, text, msg) => {
-    if (user.toLowerCase() == "AverageFemale_") {
+    if (user.toLowerCase() == "averagefemale_") {
       if (text.toLowerCase() == "!toggle on") {
         if (bool) return chatClient.say(channel,"Already on. [Automated Response]",{replyTo: msg})
         bool = false
