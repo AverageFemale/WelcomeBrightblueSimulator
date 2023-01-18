@@ -31,7 +31,7 @@ async function main() {
         const amount = parseInt(args.shift())
         const message = args.filter(v => v != amount.toString())
         for (var i = 0; i < amount; i++) {
-          chatClient.say(channel,message)
+          chatClient.say(channel,message.join(" "))
         }
       }
     }
