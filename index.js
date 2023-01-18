@@ -20,11 +20,19 @@ async function main() {
       if (text.toLowerCase() == "!toggle on") {
         if (bool) return chatClient.say(channel,"Already on. [Automated Response]",{replyTo: msg})
         bool = false
-        chatClient.say(channel,"Turned on. [Automated Response]",{replyTo: msg})
+        return chatClient.say(channel,"Turned on. [Automated Response]",{replyTo: msg})
       } else if (text.toLowerCase() == "!toggle off") {
         if (!bool) return chatClient.say(channel,"Already off. [Automated Response]",{replyTo: msg})
         bool = true
-        chatClient.say(channel,"Turned off. [Automated Response]",{replyTo: msg})
+        return chatClient.say(channel,"Turned off. [Automated Response]",{replyTo: msg})
+      }
+      if (text.toLowerCase().startsWith("!loop")) {
+        const args = text.replace(/!loop /g,"").split(" ")
+        const amount = parseInt(args.shift())
+        const message = args.filter(v => v != amount.toString())
+        for (var i = 0; i < amount + 1; i++) {
+          chatClient.say(channel,message)
+        }
       }
     }
     if (!bool) return 
