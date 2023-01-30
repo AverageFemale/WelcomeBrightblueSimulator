@@ -9,10 +9,10 @@ async function main() {
 	const clientId = process.env['id'];
   const accessToken = process.env['token']
 	const authProvider = new StaticAuthProvider(clientId,accessToken)
-  const channels = ['je_remy_','gonebaldy']
+  const channels = ['je_remy_']
   let streamers = new Map();
   streamers.set('@je_remy_',false)
-  streamers.set('@gonebaldy',false)
+  //streamers.set('@gonebaldy',false)
 	const chatClient = new ChatClient({ authProvider, channels: channels, isAlwaysMod: true });
   const apiClient = new ApiClient({authProvider})
   chatClient.onConnect(() => {console.log(`Connected to: ${channels.join(", ")}.`)})
