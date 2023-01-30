@@ -13,7 +13,7 @@ async function main() {
   let streamers = new Map();
   streamers.set('@je_remy_',false)
   streamers.set('@gonebaldy',false)
-	const chatClient = new ChatClient({ authProvider, channels: channels });
+	const chatClient = new ChatClient({ authProvider, channels: channels, isAlwaysMod: true });
   const apiClient = new ApiClient({authProvider})
   chatClient.onConnect(() => {console.log(`Connected to: ${channels.join(", ")}.`)})
   
@@ -51,7 +51,7 @@ async function main() {
       }
     }
     if (!bool) return 
-    if (/can u donat|please donat|dono me|pls donat|gift me|dono pls|pls dono|can u dono|can you dono|donate pls|donated pls|can you donat|donate me|donated me|donate to me/g.test(text.toLowerCase())) {
+    if (/can u donat|please donat|dono me|pls donat|gift me|dono pls|pls dono|can u dono|can you dono|donate pls|donated pls|can you donat|donate me|donated me|donate to me|can i get/g.test(text.toLowerCase())) {
       chatClient.say(channel,`He is currently not donating at the moment. [Automated Response]`,{replyTo: msg})
     }
 	});
