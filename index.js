@@ -51,7 +51,7 @@ async function main() {
       }
     }
     if (!bool) return 
-    if (/can u donat|please donat|dono me|pls donat|gift me|dono pls|pls dono|can u dono|can you dono|donate pls|donated pls|can you donat|donate me|donated me|donate to me|get a dono|get dono|get donation/g.test(text.toLowerCase())) {
+    if (/can u donat|please donat|dono me|pls donat|gift me|dono pls|pls dono|can u dono|can you dono|donate pls|donated pls|can you donat|donate me|donated me|donate to me|get a dono|get dono|get donat|get a donat/g.test(text.toLowerCase())) {
       chatClient.say(channel,`He is currently not donating at the moment. [Automated Response]`,{replyTo: msg})
     }
 	});
